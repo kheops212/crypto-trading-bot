@@ -2,7 +2,7 @@
 
 A fully automated, multi-asset trading bot supporting **crypto, stocks/ETFs, and forex** — with a live Streamlit dashboard, push notifications, and backtested strategy selection.
 
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/YOUR_USERNAME)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/kheops212)
 
 ---
 
@@ -120,7 +120,7 @@ This software is for educational purposes only. Trading involves significant ris
 
 If this project helped you, consider buying me a coffee!
 
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/YOUR_USERNAME)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/kheops212)
 
 ## License
 

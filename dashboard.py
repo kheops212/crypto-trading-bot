@@ -176,7 +176,7 @@ with st.sidebar:
         st.success("Marked all as seen.")
     st.divider()
     st.markdown(
-        "[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow?logo=buy-me-a-coffee)](https://buymeacoffee.com/YOUR_USERNAME)",
+        "[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow?logo=buy-me-a-coffee)](https://buymeacoffee.com/kheops212)",
         unsafe_allow_html=False,
     )
     st.divider()
