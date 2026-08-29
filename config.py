@@ -6,15 +6,19 @@ load_dotenv()
 EXCHANGE = os.getenv("EXCHANGE", "binance")
 API_KEY = os.getenv("API_KEY", "")
 API_SECRET = os.getenv("API_SECRET", "")
-PAPER_TRADE = os.getenv("PAPER_TRADE", "true").lower() == "false"
+PAPER_TRADE = os.getenv("PAPER_TRADE", "true").lower() == "true"
 
 # ntfy.sh push notifications (optional — leave blank to disable)
 NTFY_TOPIC = os.getenv("NTFY_TOPIC", "")
 
+# Telegram marketing bot (optional — leave blank to disable)
+TELEGRAM_MARKETING_TOKEN = os.getenv("TELEGRAM_MARKETING_TOKEN", "")
+TELEGRAM_CHANNEL_ID      = os.getenv("TELEGRAM_CHANNEL_ID", "")  # e.g. @YourChannel
+
 # Alpaca — live stock trading (leave blank to use paper/simulated)
 ALPACA_KEY    = os.getenv("ALPACA_KEY", "")
 ALPACA_SECRET = os.getenv("ALPACA_SECRET", "")
-ALPACA_PAPER  = os.getenv("ALPACA_PAPER", "true").lower() == "false"
+ALPACA_PAPER  = os.getenv("ALPACA_PAPER", "true").lower() == "true"
 
 # OANDA — live forex trading (leave blank to use paper/simulated)
 OANDA_TOKEN   = os.getenv("OANDA_TOKEN", "")
@@ -22,9 +26,9 @@ OANDA_ACCOUNT = os.getenv("OANDA_ACCOUNT", "")
 OANDA_PAPER   = os.getenv("OANDA_PAPER", "true").lower() == "true"
 
 # Crypto pairs
-SYMBOLS = ["BTC/USDT", "ETH/USDT", "AVAX/USDT", "LINK/USDT", "ADA/USDT", "OP/USDT",
-           "FET/USDT", "DYDX/USDT", "CRV/USDT", "BNB/USDT", "HBAR/USDT",
-           "PENDLE/USDT", "MANA/USDT", "ETC/USDT", "JASMY/USDT", "SUSHI/USDT", "ALGO/USDT"]
+SYMBOLS = ["BTC/USDT", "ETH/USDT", "AVAX/USDT", "LINK/USDT", "ADA/USDT", "OP/USD",
+           "FET/USD", "DYDX/USD", "CRV/USD", "BNB/USDT", "HBAR/USD",
+           "PENDLE/USD", "MANA/USDT", "ETC/USD", "SUSHI/USD", "ALGO/USDT"]
 
 # Stock symbols (NYSE/NASDAQ) — leave empty to disable
 STOCK_SYMBOLS = ["NVDA", "SPY", "QQQ", "NFLX", "AMD", "WMT", "CRM", "V", "IWM",

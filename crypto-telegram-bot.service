@@ -1,0 +1,15 @@
+[Unit]
+Description=Crypto Trading Bot — Telegram Marketing Bot
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=kheops212
+WorkingDirectory=/home/kheops212/cryptobot
+ExecStart=/home/kheops212/cryptobot/.venv/bin/python telegram_marketing_bot.py
+Restart=on-failure
+RestartSec=15
+
+[Install]
+WantedBy=multi-user.target

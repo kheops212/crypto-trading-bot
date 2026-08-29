@@ -9,6 +9,13 @@ _TAGS = {"success": "white_check_mark", "error": "rotating_light", "warning": "w
 
 
 def send(title: str, body: str, level: str = "info") -> bool:
+    """Send to ntfy.sh (personal) and Telegram channel (public)."""
+    _send_ntfy(title, body, level)
+    _send_channel(title, body, level)
+    return True
+
+
+def _send_ntfy(title: str, body: str, level: str) -> bool:
     if not config.NTFY_TOPIC:
         return False
     try:
@@ -27,4 +34,13 @@ def send(title: str, body: str, level: str = "info") -> bool:
         return r.ok
     except Exception as e:
         logger.warning(f"ntfy send failed: {e}")
+        return False
+
+
+def _send_channel(title: str, body: str, level: str) -> bool:
+    try:
+        from telegram_marketing_bot import post_to_channel
+        return post_to_channel(title, body, level)
+    except Exception as e:
+        logger.warning(f"Telegram channel post failed: {e}")
         return False
