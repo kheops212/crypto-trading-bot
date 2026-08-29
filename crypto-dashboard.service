@@ -1,0 +1,15 @@
+[Unit]
+Description=Crypto Bot Dashboard
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=kheops212
+WorkingDirectory=/home/kheops212/cryptobot
+ExecStart=/home/kheops212/cryptobot/.venv/bin/streamlit run dashboard.py --server.port 8501 --server.headless true
+Restart=on-failure
+RestartSec=15
+
+[Install]
+WantedBy=multi-user.target

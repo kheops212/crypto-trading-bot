@@ -1,0 +1,11 @@
+ccxt>=4.3.0
+yfinance>=0.2.40
+pytz>=2024.1
+pandas>=2.0.0
+pandas-ta>=0.3.14b0
+python-dotenv>=1.0.0
+loguru>=0.7.0
+apscheduler>=3.10.0
+vectorbt>=0.26.0
+streamlit>=1.35.0
+plotly>=5.22.0
