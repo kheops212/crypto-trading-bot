@@ -1,3 +1,7 @@
+<img width="1214" height="683" alt="Screenshot 2026-08-29 at 00-35-06 Crypto Bot Dashboard" src="https://github.com/user-attachments/assets/ddc6bccf-8a19-43e3-834f-07bf0709a1dd" />
+<img width="1214" height="683" alt="Screenshot 2026-08-29 at 00-34-46 Crypto Bot Dashboard" src="https://github.com/user-attachments/assets/fedd7efe-87f8-4f7d-93f6-76eb322386aa" />
+<img width="1214" height="683" alt="Screenshot 2026-08-29 at 00-34-11 Crypto Bot Dashboard" src="https://github.com/user-attachments/assets/cd399d47-fc54-4148-bae7-6abe55d3e61a" />
+<img width="1214" height="683" alt="Screenshot 2026-08-29 at 00-33-43 Crypto Bot Dashboard" src="https://github.com/user-attachments/assets/1fee0ab1-fd9c-4c6a-afbb-d8bd9f32c383" />
 # Crypto Trading Bot
 
 A fully automated, multi-asset trading bot supporting **crypto, stocks/ETFs, and forex** — with a live Streamlit dashboard, push notifications, and backtested strategy selection.
