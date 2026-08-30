@@ -28,12 +28,13 @@ OANDA_PAPER   = os.getenv("OANDA_PAPER", "true").lower() == "true"
 # Crypto pairs
 SYMBOLS = ["BTC/USDT", "ETH/USDT", "AVAX/USDT", "LINK/USDT", "ADA/USDT", "OP/USD",
            "FET/USD", "DYDX/USD", "CRV/USD", "BNB/USDT", "HBAR/USD",
-           "PENDLE/USD", "MANA/USDT", "ETC/USD", "SUSHI/USD", "ALGO/USDT"]
+           "PENDLE/USD", "MANA/USDT", "ETC/USD", "SUSHI/USD", "ALGO/USDT",
+           "METIS/USD", "OSMO/USD", "XTZ/USD"]
 
 # Stock symbols (NYSE/NASDAQ) — leave empty to disable
 STOCK_SYMBOLS = ["NVDA", "SPY", "QQQ", "NFLX", "AMD", "WMT", "CRM", "V", "IWM",
                  "GS", "CVX", "SOXX", "BAC", "WEAT", "DBA", "DJP", "CAT", "XLI", "SCHD",
-                 "MRK", "CB", "ROBO"]
+                 "MRK", "CB", "ROBO", "SHW", "ROK", "TRV", "GE", "DPZ"]
 
 # Forex pairs (24/5) — leave empty to disable
 FOREX_SYMBOLS = ["EUR/USD", "GBP/USD", "AUD/USD"]
