@@ -45,7 +45,7 @@ LIMIT = 210  # needs 200+ candles for trend filter EMA
 STRATEGY = "rsi_reversal"
 
 # Trend filter: only allow buys when price is above this EMA length
-TREND_FILTER = True
+TREND_FILTER = False
 TREND_EMA_PERIOD = 200
 
 # EMA crossover params
@@ -54,8 +54,8 @@ EMA_SLOW = 21
 
 # RSI params
 RSI_PERIOD    = 10
-RSI_OVERSOLD  = 25
-RSI_OVERBOUGHT = 55
+RSI_OVERSOLD  = 30
+RSI_OVERBOUGHT = 65
 
 # MACD params
 MACD_FAST = 12
@@ -68,10 +68,10 @@ BB_STD = 2.0
 
 # Risk management
 TRADE_AMOUNT_USDT = 10.0  # USDT per trade, per symbol
-MAX_OPEN_TRADES = 1       # set to 1 while testing with small balance
+MAX_OPEN_TRADES = 49      # paper trading — allow all symbols simultaneously
 TRAILING_STOP   = True    # stop moves up as price rises
-STOP_LOSS_PCT   = 0.02    # trailing distance below highest price
-TAKE_PROFIT_PCT = 0.04    # 4%
+STOP_LOSS_PCT   = 0.03    # trailing distance below highest price
+TAKE_PROFIT_PCT = 0.06    # 6%
 
 # Scheduler intervals (seconds)
 POLL_INTERVAL       = 3600  # strategy signals — every 1 hour

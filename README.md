@@ -7,12 +7,21 @@
 A fully automated, multi-asset trading bot supporting **crypto, stocks/ETFs, and forex** — with a live Streamlit dashboard, push notifications, and backtested strategy selection.
 
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/kheops212)
+[![Telegram Bot](https://img.shields.io/badge/Telegram-Bot-2CA5E0?style=for-the-badge&logo=telegram)](https://t.me/CryptoTradingLive26_bot)
+[![Telegram Channel](https://img.shields.io/badge/Telegram-Live%20Trades-2CA5E0?style=for-the-badge&logo=telegram)](https://t.me/CryptoTradingLive26)
 
 ---
 
+## Community
+
+| | Link |
+|---|---|
+| 📢 **Live trade channel** | [@CryptoTradingLive26](https://t.me/CryptoTradingLive26) — every real trade posted automatically |
+| 🤖 **Telegram bot** | [@CryptoTradingLive26_bot](https://t.me/CryptoTradingLive26_bot) — commands: `/start`, `/features`, `/strategy`, `/results`, `/github`, `/coffee` |
+
 ## Features
 
-- **42 symbols** — 17 crypto (Kraken), 22 stocks/ETFs (Alpaca), 3 forex
+- **49 symbols** — 19 crypto (Kraken), 27 stocks/ETFs (Alpaca), 3 forex
 - **5 strategies** — EMA crossover, RSI reversal, MACD, Bollinger Bands, Combined
 - **RSI reversal** with 200 EMA trend filter (default, backtested for best win rate)
 - **Trailing stop-loss** — stop moves up as price rises, locking in profit
@@ -88,6 +97,9 @@ ALPACA_SECRET=your_alpaca_secret
 ALPACA_PAPER=true                # set false for live stocks
 
 NTFY_TOPIC=your-unique-topic     # push notifications (optional)
+
+TELEGRAM_MARKETING_TOKEN=your_bot_token   # Telegram marketing bot (optional)
+TELEGRAM_CHANNEL_ID=@YourChannel          # Telegram live trade channel (optional)
 ```
 
 ## Running as a Service (Linux)

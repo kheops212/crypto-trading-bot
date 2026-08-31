@@ -36,7 +36,7 @@ def _call(method: str, token: str, payload: dict) -> dict | None:
     return None
 
 
-def _send(chat_id: str, text: str, parse_mode: str = "Markdown") -> bool:
+def _send(chat_id: str, text: str, parse_mode: str = "HTML") -> bool:
     result = _call("sendMessage", config.TELEGRAM_MARKETING_TOKEN, {
         "chat_id": chat_id,
         "text": text,
@@ -56,9 +56,9 @@ def post_to_channel(title: str, body: str, level: str = "info") -> bool:
     icons = {"success": "🟢", "error": "🔴", "warning": "🟡", "info": "🔵"}
     icon = icons.get(level, "🔵")
     text = (
-        f"{icon} *{title}*\n"
+        f"{icon} <b>{title}</b>\n"
         f"{body}\n\n"
-        f"🤖 [Live bot]({GITHUB_URL}) • [Support]({COFFEE_URL})"
+        f'🤖 <a href="{GITHUB_URL}">Live bot</a> • <a href="{COFFEE_URL}">Support</a>'
     )
     return _send(config.TELEGRAM_CHANNEL_ID, text)
 
@@ -69,8 +69,8 @@ def post_to_channel(title: str, body: str, level: str = "info") -> bool:
 
 COMMANDS = {
     "/start": (
-        "👋 *Welcome to the Crypto Trading Bot!*\n\n"
-        "I'm a fully automated trading bot that runs across *crypto, stocks/ETFs, and forex* simultaneously.\n\n"
+        "👋 <b>Welcome to the Crypto Trading Bot!</b>\n\n"
+        "I'm a fully automated trading bot that runs across <b>crypto, stocks/ETFs, and forex</b> simultaneously.\n\n"
         "Use the commands below to learn more:\n"
         "/features — what I can do\n"
         "/strategy — how I trade\n"
@@ -80,7 +80,7 @@ COMMANDS = {
         "/help — show all commands"
     ),
     "/help": (
-        "📋 *Available Commands*\n\n"
+        "📋 <b>Available Commands</b>\n\n"
         "/start — welcome message\n"
         "/features — full feature list\n"
         "/strategy — trading strategy explained\n"
@@ -89,36 +89,36 @@ COMMANDS = {
         "/coffee — buy me a coffee ☕\n"
     ),
     "/features": (
-        "⚙️ *Features*\n\n"
-        "• *42 symbols* — crypto (Kraken), stocks/ETFs (Alpaca), forex\n"
-        "• *5 strategies* — EMA, RSI, MACD, Bollinger Bands, Combined\n"
-        "• *RSI reversal + 200 EMA trend filter* — 75–100% backtested win rates\n"
-        "• *Trailing stop-loss* — stop moves up as price rises\n"
-        "• *5-min SL/TP checks* + hourly strategy signals\n"
-        "• *Streamlit dashboard* — P&L, positions, strategy optimizer\n"
-        "• *Push notifications* via ntfy.sh\n"
-        "• *24/7 operation* via systemd — survives reboots\n"
-        "• *Paper trading mode* — test safely before going live\n\n"
-        f"🔗 [View on GitHub]({GITHUB_URL})"
+        "⚙️ <b>Features</b>\n\n"
+        "• <b>49 symbols</b> — crypto (Kraken), stocks/ETFs (Alpaca), forex\n"
+        "• <b>5 strategies</b> — EMA, RSI, MACD, Bollinger Bands, Combined\n"
+        "• <b>RSI reversal + 200 EMA trend filter</b> — 75–100% backtested win rates\n"
+        "• <b>Trailing stop-loss</b> — stop moves up as price rises\n"
+        "• <b>5-min SL/TP checks</b> + hourly strategy signals\n"
+        "• <b>Streamlit dashboard</b> — P&amp;L, positions, strategy optimizer\n"
+        "• <b>Push notifications</b> via ntfy.sh\n"
+        "• <b>24/7 operation</b> via systemd — survives reboots\n"
+        "• <b>Paper trading mode</b> — test safely before going live\n\n"
+        f'🔗 <a href="{GITHUB_URL}">View on GitHub</a>'
     ),
     "/strategy": (
-        "📊 *Trading Strategy*\n\n"
-        "*RSI Reversal + 200 EMA Trend Filter*\n\n"
-        "• Only buys when RSI crosses up through oversold (25) — genuine dip recoveries\n"
-        "• Sells when RSI reaches overbought (55)\n"
+        "📊 <b>Trading Strategy</b>\n\n"
+        "<b>RSI Reversal + 200 EMA Trend Filter</b>\n\n"
+        "• Only buys when RSI crosses up through oversold — genuine dip recoveries\n"
+        "• Sells when RSI reaches overbought\n"
         "• 200 EMA trend filter blocks buys in downtrends — avoids falling knives\n"
         "• Trailing stop-loss locks in profit as price rises\n\n"
-        "*Backtested win rates (1 year, hourly data):*\n"
-        "BTC/USDT — 57.9% | AVAX — 83.3% | GS — 100% | SOXX — 83.3%\n\n"
-        f"🔗 [Full backtest details]({GITHUB_URL})"
+        "<b>Backtested win rates (1 year, hourly data):</b>\n"
+        "BTC — 57.9% | AVAX — 83.3% | GS — 100% | SOXX — 83.3%\n\n"
+        f'🔗 <a href="{GITHUB_URL}">Full backtest details</a>'
     ),
     "/github": (
-        f"👨‍💻 *Open Source*\n\n"
+        f"👨‍💻 <b>Open Source</b>\n\n"
         f"The full source code is free on GitHub:\n{GITHUB_URL}\n\n"
         "⭐ Star the repo if it helped you!"
     ),
     "/coffee": (
-        f"☕ *Support the Project*\n\n"
+        f"☕ <b>Support the Project</b>\n\n"
         f"If this bot helped you, consider buying me a coffee!\n{COFFEE_URL}\n\n"
         "Every contribution helps keep the project maintained and updated. 🙏"
     ),
@@ -128,20 +128,20 @@ COMMANDS = {
 def _results_message() -> str:
     closed = trades.get_closed_positions(limit=5)
     if not closed:
-        return "📭 *Recent Trades*\n\nNo closed trades yet — the bot is running and waiting for signals."
+        return "📭 <b>Recent Trades</b>\n\nNo closed trades yet — the bot is running and waiting for signals."
 
-    lines = ["📈 *Recent Trades*\n"]
+    lines = ["📈 <b>Recent Trades</b>\n"]
     for p in closed:
         pnl = (p["close_price"] - p["entry_price"]) * p["amount"]
         pnl_pct = (p["close_price"] / p["entry_price"] - 1) * 100
         icon = "🟢" if pnl >= 0 else "🔴"
         date = p["closed_at"][:10] if p["closed_at"] else "—"
         lines.append(
-            f"{icon} *{p['symbol']}* — {p['close_reason']}\n"
+            f"{icon} <b>{p['symbol']}</b> — {p['close_reason']}\n"
             f"   Entry: ${p['entry_price']:,.4f} → Close: ${p['close_price']:,.4f}\n"
-            f"   P&L: {pnl:+.4f} ({pnl_pct:+.2f}%) | {date}"
+            f"   P&amp;L: {pnl:+.4f} ({pnl_pct:+.2f}%) | {date}"
         )
-    lines.append(f"\n🔗 [Live dashboard & more]({GITHUB_URL})")
+    lines.append(f'\n🔗 <a href="{GITHUB_URL}">Live dashboard &amp; more</a>')
     return "\n\n".join(lines)
 
 
