@@ -3,3 +3,7 @@
 __pycache__/
 *.pyc
 .venv/
+venv/
+params.json
+bot.log
+nssm.exe

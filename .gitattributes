@@ -1,0 +1,14 @@
+# Enforce correct line endings across platforms
+* text=auto
+
+# Windows batch and PowerShell scripts require CRLF
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+
+# Unix shell scripts require LF
+*.sh text eol=lf
+
+# Python and config stay LF
+*.py text eol=lf
+*.md text eol=lf
+*.txt text eol=lf

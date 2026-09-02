@@ -50,9 +50,11 @@ A fully automated, multi-asset trading bot supporting **crypto, stocks/ETFs, and
 
 ## Quickstart
 
+### Linux / macOS
+
 ```bash
 # 1. Clone
-git clone https://github.com/YOUR_USERNAME/crypto-trading-bot.git
+git clone https://github.com/kheops212/crypto-trading-bot.git
 cd crypto-trading-bot
 
 # 2. Create virtual environment
@@ -66,6 +68,35 @@ cp .env.example .env
 # 4. Run (paper trading by default)
 ./run_bot.sh        # terminal 1
 ./run_dashboard.sh  # terminal 2
+```
+
+### Windows
+
+```powershell
+# 1. Clone
+git clone https://github.com/kheops212/crypto-trading-bot.git
+cd crypto-trading-bot
+
+# 2. Run setup (creates venv, installs dependencies, copies .env)
+setup.bat
+
+# 3. Edit .env with your API keys
+
+# 4. Run
+run_bot.bat        # terminal 1
+run_dashboard.bat  # terminal 2
+```
+
+**Run as a Windows service (survives logout, auto-starts on reboot):**
+1. Download [nssm.exe](https://nssm.cc/download) and place it in the project folder
+2. Open PowerShell as Administrator
+3. Run: `.\install_service_windows.ps1`
+
+```powershell
+# Manage the service
+nssm stop crypto-bot
+nssm start crypto-bot
+nssm restart crypto-bot
 ```
 
 ## Configuration
