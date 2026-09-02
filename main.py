@@ -1,4 +1,6 @@
 import time
+import threading
+import importlib
 from loguru import logger
 import config
 import exchange as ex
@@ -51,7 +53,7 @@ def _close_position(exchange, position: dict, price: float, reason: str):
 # ---------------------------------------------------------------------------
 
 def check_orphaned_positions():
-    all_symbols = set(config.SYMBOLS + config.STOCK_SYMBOLS)
+    all_symbols = set(config.SYMBOLS + config.STOCK_SYMBOLS + config.FOREX_SYMBOLS)
     orphaned = [p for p in trades.get_all_open_positions() if p["symbol"] not in all_symbols]
     if not orphaned:
         return
@@ -213,7 +215,17 @@ def main():
         f"SL/TP check: {config.SLTP_CHECK_INTERVAL}s | Strategy: {config.POLL_INTERVAL}s"
     )
 
-    last_strategy_run = 0
+    last_strategy_run  = 0
+    last_optimization  = 0
+
+    def _run_optimizer_bg():
+        try:
+            from optimizer import optimize_and_apply
+            optimize_and_apply()
+            importlib.reload(config)
+        except Exception as e:
+            logger.error(f"Auto-optimizer error: {e}")
+
     while True:
         now = time.time()
 
@@ -224,6 +236,12 @@ def main():
         if now - last_strategy_run >= config.POLL_INTERVAL:
             run_bot(crypto_exchange, stock_exchange, forex_exchange)
             last_strategy_run = now
+
+        # Weekly RSI auto-optimization (runs in background thread)
+        if now - last_optimization >= config.OPTIMIZE_INTERVAL:
+            logger.info("Launching weekly RSI auto-optimizer in background...")
+            threading.Thread(target=_run_optimizer_bg, daemon=True).start()
+            last_optimization = now
 
         time.sleep(config.SLTP_CHECK_INTERVAL)
 

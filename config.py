@@ -52,10 +52,20 @@ TREND_EMA_PERIOD = 200
 EMA_FAST = 9
 EMA_SLOW = 21
 
-# RSI params
-RSI_PERIOD    = 10
-RSI_OVERSOLD  = 30
-RSI_OVERBOUGHT = 65
+# RSI params — auto-optimizer may override these via params.json
+_opt: dict = {}
+try:
+    import json as _json
+    from pathlib import Path as _Path
+    _f = _Path(__file__).parent / "params.json"
+    if _f.exists():
+        _opt = _json.loads(_f.read_text())
+except Exception:
+    pass
+
+RSI_PERIOD     = _opt.get("RSI_PERIOD",    10)
+RSI_OVERSOLD   = _opt.get("RSI_OVERSOLD",  30)
+RSI_OVERBOUGHT = _opt.get("RSI_OVERBOUGHT", 65)
 
 # MACD params
 MACD_FAST = 12
@@ -74,5 +84,6 @@ STOP_LOSS_PCT   = 0.03    # trailing distance below highest price
 TAKE_PROFIT_PCT = 0.06    # 6%
 
 # Scheduler intervals (seconds)
-POLL_INTERVAL       = 3600  # strategy signals — every 1 hour
-SLTP_CHECK_INTERVAL = 300   # SL/TP price check — every 5 minutes
+POLL_INTERVAL       = 3600          # strategy signals — every 1 hour
+SLTP_CHECK_INTERVAL = 300           # SL/TP price check — every 5 minutes
+OPTIMIZE_INTERVAL   = 7 * 24 * 3600 # auto RSI optimization — every 7 days
